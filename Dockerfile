@@ -4,6 +4,7 @@ WORKDIR /build
 COPY . /build
 
 RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y build-essential python3 && \
     npm install && npm run build
 
 # production stage
