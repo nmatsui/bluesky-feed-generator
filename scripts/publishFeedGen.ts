@@ -7,25 +7,29 @@ const run = async () => {
   dotenv.config()
 
   // YOUR bluesky handle
-  // Ex: user.bsky.social
-  const handle = ''
+  if (!process.env.FEEDGEN_PUBLISH_HANDLE) {
+    throw new Error('Please provide your bluesky handle in the .env file')
+  }
+  const handle = process.env.FEEDGEN_PUBLISH_HANDLE
 
   // YOUR bluesky password, or preferably an App Password (found in your client settings)
-  // Ex: abcd-1234-efgh-5678
-  const password = ''
+  if (!process.env.FEEDGEN_PUBLISH_PASSWORD) {
+    throw new Error('Please provide your bluesky password in the .env file')
+  }
+  const password = process.env.FEEDGEN_PUBLISH_PASSWORD
 
   // A short name for the record that will show in urls
   // Lowercase with no spaces.
   // Ex: whats-hot
-  const recordName = ''
+  const recordName = 'whats-weather'
 
   // A display name for your feed
   // Ex: What's Hot
-  const displayName = ''
+  const displayName = '天気はどう？'
 
   // (Optional) A description of your feed
   // Ex: Top trending content from the whole network
-  const description = ''
+  const description = '"天気"についての話題を集めるフィード（feed generatorのテスト用）'
 
   // (Optional) The path to an image to be used as your feed's avatar
   // Ex: ~/path/to/avatar.jpeg
